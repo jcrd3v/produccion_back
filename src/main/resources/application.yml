@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: controlproduccionback
+  datasource:
+    url: jdbc:postgresql://localhost:5432/control_produccion
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

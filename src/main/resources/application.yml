@@ -3,7 +3,7 @@ spring:
     name: controlproduccionback
   datasource:
     url: jdbc:postgresql://localhost:5432/control_produccion
-    username: postgres
+    username: jcrdev
     password: postgres
   jpa:
     hibernate:

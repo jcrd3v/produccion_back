@@ -26,9 +26,9 @@ public class AuthController {
     public ResponseEntity<?> iniciarSesion(@RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findByNombreUsuarioAndClaveUsuario(usuario.getNombreUsuario(), usuario.getClaveUsuario());
         if (usuarioExistente.isPresent()) {
-            return ResponseEntity.ok("Credenciales correctas");
+            return ResponseWrapper.exito(usuarioExistente, "Credenciales correctas").toResponseEntity();
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+            return ResponseWrapper.error("Credenciales incorrectas", 401 ).toResponseEntity();
         }
     }
 }

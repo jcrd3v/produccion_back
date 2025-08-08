@@ -7,4 +7,5 @@ import java.util.List;
 public interface MaterialServiceInterface {
     List<Material> buscarMateriales(); // listar materiales
     Material guardarMaterial(Material material); // crear material
+    Material actualizarStock(Long idMaterial, Double nuevaCantidad); // actualizar stock
 }

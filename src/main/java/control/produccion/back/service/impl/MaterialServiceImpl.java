@@ -26,5 +26,14 @@ public class MaterialServiceImpl implements MaterialServiceInterface {
         return materialRepository.findAll();
     }
 
+    @Override
+    public Material actualizarStock(Long idMaterial, Double nuevaCantidad) {
+        Material material = materialRepository.findById(idMaterial).orElse(null);
+        if (material != null) {
+            double stockActual = material.getStockMaterial();
+            material.setStockMaterial(stockActual - nuevaCantidad);
+            return materialRepository.save(material);
+        }
+        return null;
+    }
 }
-

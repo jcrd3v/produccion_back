@@ -2,8 +2,6 @@ package control.produccion.back.controller;
 
 import control.produccion.back.model.Usuario;
 import control.produccion.back.repository.UsuarioJpaRepository;
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

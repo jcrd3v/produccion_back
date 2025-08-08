@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/almacen/materiales")
@@ -38,5 +38,16 @@ public class MaterialController {
         materialService.guardarMaterial(materialNuevo);
 
         return ResponseWrapper.exito(materialNuevo, "Material guardado.").toResponseEntity();
+    }
+
+    @PatchMapping("/{idMaterial}/stock")
+    public ResponseEntity<?> actualizarStockMaterial(@PathVariable Long idMaterial, @RequestBody Map<String, Double> request) {
+        Double nuevaCantidad = request.get("cantidad");
+        Material materialActualizado = materialService.actualizarStock(idMaterial, nuevaCantidad);
+
+        if (materialActualizado != null) {
+            return ResponseWrapper.exito(materialActualizado, "Stock actualizado").toResponseEntity();
+        }
+        return ResponseWrapper.error("Material no encontrado", 404).toResponseEntity();
     }
 }
